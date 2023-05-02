@@ -7,6 +7,11 @@
     
 
     <div class="py-12">
+        @if(session('err_msg'))
+        <p class="text_danger" style="color: blue;">
+            {{session('err_msg')}}
+        </p>
+        @endif
         <!-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     
