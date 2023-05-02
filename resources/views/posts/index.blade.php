@@ -39,8 +39,10 @@
                                 </a>
                             </h6>
                             <p class="card-text">{{$post->content}}></p>
-                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">詳細</a>
+                            <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary" style="background-color:rgba(0,0,0,0.5); font-weight: bold; border:none;">詳細</a>
+                            <p>
                             <h6 class="card-title">投稿日時：{{$post->updated_at}}</h6>
+                            </p>
                         </div>
                     </div>
                 </div>
