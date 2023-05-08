@@ -33,7 +33,7 @@
                             <p class="card-text">{{$post->content}}></p>
                         </div>
                     </div>
-                    <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary">コメントをする</a>
+                    <a href="{{ route('comments.create',['post_id'=> $post->id]) }}" class="btn btn-primary">コメントをする</a>
 
                 </div>
 
