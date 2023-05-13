@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Comment;
+use App\Http\Requests\CommentRequest;
+
 class CommentController extends Controller
 {
     /**
@@ -27,9 +30,20 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CommentRequest $request)
     {
-        //
+        $comment = new Comment;
+        $input = $request->only($comment->getFillable());
+        $comment = $comment->create($input);
+        // Comment::create($input);でもよい
+                 
+        // \Session::flash('err_msg', '新規コメントが完了しました!');
+
+        // return redirect('posts/'.$comment->post_id);//これでもよい
+        return redirect()->route('posts.show', $comment->post_id);
+
+
+
     }
 
     /**
