@@ -70,7 +70,8 @@ class PostController extends Controller
     public function show(Post $post)
     //渡されるのはidだがPost $postとすることで自動で対応する$postを取ってきてくれる
     {
-        $post->load('category', 'user', 'comments');
+        $post->load('category', 'user', 'comments.user');
+        // dd($post);
         return view('posts.show',['post'=>$post]);
     }
 

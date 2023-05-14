@@ -25,18 +25,29 @@
 
                 <div class = "p-6">
                     <div class="card">
-                  
+    
                         <div class="card-body">
                             <!-- <h5 class="card-title">{{$post->title}}</h5>
                             <h6 class="card-title">投稿者：{{$post->user->name}}</h6>
                             <h6 class="card-title">カテゴリー：{{$post->category->category_name}}</h6> -->
-                            <p class="card-text">{{$post->content}}></p>
+                            <!-- <p class="card-text">{{$post->content}}></p> -->
                         </div>
                     </div>
                     <a href="{{ route('comments.create',['post_id'=> $post->id]) }}" class="btn btn-primary">コメントをする</a>
 
                 </div>
-
+                <div class = "p-6">
+                    <h4>コメント一覧</h4>
+                    @foreach($post->comments as $comment)
+                    <div class = "card">
+                    <div class="card-body">
+                        <h6 class="card-title">投稿者：{{$comment->user->name}}</h6>
+                        <p class="card-text">{{$comment->comment}}</p>
+                    </div>
+                    </div>
+                    <br>
+                    @endforeach
+                </div>
                 
             </div>
         <!-- </div> -->
