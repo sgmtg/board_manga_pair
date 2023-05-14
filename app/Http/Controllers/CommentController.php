@@ -41,9 +41,6 @@ class CommentController extends Controller
 
         // return redirect('posts/'.$comment->post_id);//これでもよい
         return redirect()->route('posts.show', $comment->post_id);
-
-
-
     }
 
     /**
