@@ -41,7 +41,11 @@
                     @foreach($post->comments as $comment)
                     <div class = "card">
                     <div class="card-body">
-                        <h6 class="card-title">投稿者：{{$comment->user->name}}</h6>
+                        <h6 class="card-title">投稿者：
+                            <a href = "{{route('users.show', $post->user_id)}}">
+                                {{$comment->user->name}}
+                            </a>
+                        </h6>
                         <p class="card-text">{{$comment->comment}}</p>
                     </div>
                     </div>
