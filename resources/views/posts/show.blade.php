@@ -18,21 +18,25 @@
                             <h5 class="card-title">{{$post->title}}</h5>
                             <h6 class="card-title">投稿者：{{$post->user->name}}</h6>
                             <h6 class="card-title">カテゴリー：{{$post->category->category_name}}</h6>
-                            <p class="card-text">{{$post->content}}></p>
+                            <div class="card">
+                            <div class="card-body"> 
+                                <p class="card-text">{{$post->content}}</p>
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class = "p-6">
-                    <div class="card">
+                    <!-- <div class="card">
     
-                        <div class="card-body">
+                        <div class="card-body"> -->
                             <!-- <h5 class="card-title">{{$post->title}}</h5>
                             <h6 class="card-title">投稿者：{{$post->user->name}}</h6>
                             <h6 class="card-title">カテゴリー：{{$post->category->category_name}}</h6> -->
                             <!-- <p class="card-text">{{$post->content}}></p> -->
-                        </div>
-                    </div>
+                        <!-- </div>
+                    </div> -->
                     <a href="{{ route('comments.create',['post_id'=> $post->id]) }}" class="btn btn-primary">コメントをする</a>
 
                 </div>
