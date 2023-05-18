@@ -27,7 +27,7 @@
                     @endif
 
                         <div class="card-header">
-                            Featured
+                            投稿 No.{{$post->id}}
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">{{$post->title}}</h5>
