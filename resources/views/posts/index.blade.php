@@ -56,9 +56,11 @@
                     </div>
                 </div>
                 @endforeach
-                    
-                
+                <div style="text-align: center;">
+                    {{ $posts->links() }}
+                </div>
             </div>
         <!-- </div> -->
     </div>
+    
 </x-app-layout>
