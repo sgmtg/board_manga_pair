@@ -12,7 +12,7 @@
             {{session('err_msg')}}
         </p>
         @endif
-        <!-- <div class="max-w-7xl mx-auto sm:px-6 lg:px-8"> -->
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 
                 @foreach($posts as $post)
@@ -56,10 +56,9 @@
                     </div>
                 </div>
                 @endforeach
-                <div style="text-align: center;">
-                    {{ $posts->links() }}
-                </div>
+                {{ $posts->links() }}
             </div>
+        </div>
         <!-- </div> -->
     </div>
     
