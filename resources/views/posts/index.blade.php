@@ -4,9 +4,30 @@
             {{ __('Board') }}
         </h2>
     </x-slot>
-    
 
-    <div class="py-12">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <div class = "card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6 class = "card-title" style = "font-weight: bold;">検索フォーム</h6>
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                            <span class="input-group-btn" style = "position: relative; right: -5px;">
+                                <button class="btn btn-info" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-2">
         @if(session('err_msg'))
         <p class="text_danger" style="color: blue;">
             {{session('err_msg')}}
@@ -14,7 +35,6 @@
         @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                
                 @foreach($posts as $post)
                 <div class="p-6 text-gray-900">
 
