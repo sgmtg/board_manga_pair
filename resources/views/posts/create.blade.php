@@ -24,7 +24,7 @@
                                 </ul>
                             </div>
                         @endif
-                            <form action="{{route("posts.store")}}" method="POST">
+                            <form action="{{route('posts.store')}}" method="POST">
                                 {{csrf_field()}}
 
                                 <div class="form-group">
