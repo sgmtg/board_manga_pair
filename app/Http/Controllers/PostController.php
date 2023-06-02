@@ -98,6 +98,10 @@ class PostController extends Controller
     {
         //
     }
+
+    /**
+     * Search the specified resource from storage.
+     */
     
     public function search(Request $request)
     {
