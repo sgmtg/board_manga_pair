@@ -14,9 +14,9 @@
                     <h6 class = "card-title" style = "font-weight: bold;">検索フォーム</h6>
                     <div id="custom-search-input">
                         <div class="input-group col-md-12">
-                            <form method="POST" action ="{{ route('posts.search')}}">
+                            <form method="get" action ="{{ route('posts.search')}}">
                                 {{csrf_field()}}
-                                <input type="text" class="form-control input-lg" placeholder="Buscar" name="search_word"/>
+                                <input type="text" class="form-control input-lg" placeholder="Buscar" name="search_query"/>
                                 <span class="input-group-btn" style = "position: relative; right: -186px; top: -38px;">
                                     <button class="btn btn-info" type="submit">
                                         <i class="fa fa-search"></i>
@@ -84,7 +84,15 @@
                     </div>
                 </div>
                 @endforeach
-                {{ $posts->links() }}
+
+                @isset($category_id)
+                    {{ $posts->appends(['category_id' => $category_id])->links()}}
+                @elseif(isset($search_query))
+                    {{ $posts->appends(['search_query' => $search_query])->links()}}
+                @else
+                    {{ $posts->links()}}
+                @endisset
+
             </div>
         </div>
         <!-- </div> -->

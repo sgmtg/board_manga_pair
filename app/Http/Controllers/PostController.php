@@ -23,6 +23,7 @@ class PostController extends Controller
 
             return view('posts.index',[
                 'posts' => $posts,
+                'category_id' => $q['category_id'],
             ]);
         }else{
             $posts = Post::latest()->paginate(5);
@@ -104,16 +105,17 @@ class PostController extends Controller
     public function search(Request $request)
     {
         // 投稿の検索機能を作成する
-        $search_word = $request->search_word;
-        $posts = Post::latest()->where('title', 'like', "%$search_word%")
-        ->orWhere('content', 'like', "%$search_word%")
+        $search_query = $request->search_query;
+        $posts = Post::latest()->where('title', 'like', "%$search_query%")
+        ->orWhere('content', 'like', "%$search_query%")
         ->paginate(5);
 
-        $search_result = '"'.$search_word.'"の検索結果：'.$posts->total()."件"; 
+        $search_result = '"'.$search_query.'"の検索結果：'.$posts->total()."件"; 
 
         return view('posts.index',[
             'posts' => $posts,
-            'search_result' => $search_result
+            'search_result' => $search_result,
+            'search_query' => $search_query,
         ]);
     }
 }
