@@ -14,12 +14,15 @@
                     <h6 class = "card-title" style = "font-weight: bold;">検索フォーム</h6>
                     <div id="custom-search-input">
                         <div class="input-group col-md-12">
-                            <input type="text" class="form-control input-lg" placeholder="Buscar" />
-                            <span class="input-group-btn" style = "position: relative; right: -5px;">
-                                <button class="btn btn-info" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
+                            <form method="POST" action ="{{ route('posts.search')}}">
+                                {{csrf_field()}}
+                                <input type="text" class="form-control input-lg" placeholder="Buscar" name="search_word"/>
+                                <span class="input-group-btn" style = "position: relative; right: -186px; top: -38px;">
+                                    <button class="btn btn-info" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -35,6 +38,7 @@
         @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                
                 @foreach($posts as $post)
                 <div class="p-6 text-gray-900">
 
