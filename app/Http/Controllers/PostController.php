@@ -98,4 +98,11 @@ class PostController extends Controller
     {
         //
     }
+    
+    public function search(Request $request)
+    {
+        // 投稿の検索機能を作成する
+        $q = $request->search_word;
+        dd($q);
+    }
 }
