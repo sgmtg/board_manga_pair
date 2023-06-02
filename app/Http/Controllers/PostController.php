@@ -107,7 +107,7 @@ class PostController extends Controller
         ->orWhere('content', 'like', "%$search_word%")
         ->paginate(5);
 
-        $search_result = $search_word."の検索結果".$posts->count()."件"; 
+        $search_result = '"'.$search_word.'"の検索結果'.$posts->count()."件"; 
 
         return view('posts.index',[
             'posts' => $posts,
