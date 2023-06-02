@@ -103,6 +103,10 @@ class PostController extends Controller
     {
         // 投稿の検索機能を作成する
         $q = $request->search_word;
-        dd($q);
+        $posts = Post::where('title', 'like', "%$q%")
+        ->orWhere('content', 'like', "%$q%")
+        ->paginate(5);
+
+        dd($posts);
     }
 }
