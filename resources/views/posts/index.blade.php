@@ -28,7 +28,11 @@
                 </div>
             </div>
         </div>
+        @isset($search_result)
+        <div style = "font-weight: bold;">{{ $search_result }}</div>
+        @endisset
     </div>
+
 
     <div class="py-2">
         @if(session('err_msg'))
