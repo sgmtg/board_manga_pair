@@ -102,11 +102,16 @@ class PostController extends Controller
     public function search(Request $request)
     {
         // 投稿の検索機能を作成する
-        $q = $request->search_word;
-        $posts = Post::where('title', 'like', "%$q%")
-        ->orWhere('content', 'like', "%$q%")
+        $search_word = $request->search_word;
+        $posts = Post::latest()->where('title', 'like', "%$search_word%")
+        ->orWhere('content', 'like', "%$search_word%")
         ->paginate(5);
 
-        dd($posts);
+        $search_result = $search_word."の検索結果".$posts->count()."件"; 
+
+        return view('posts.index',[
+            'posts' => $posts,
+            'search_result' => $search_result
+        ]);
     }
 }
