@@ -40,10 +40,10 @@
                                 <div class="form-group">
                                         <label for="exampleFormControlSelect1">カテゴリー</label>
                                         <select class="form-control" id="exampleFormControlSelect1" name="category_id">
-                                            <option selected="">選択する</option>
-                                            <option value="1">book</option>
-                                            <option value="2">cafe</option>
-                                            <option value="3">travel</option>
+                                            <option selected="">選択してください</option>   
+                                            @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                            @endforeach
                                         </select>
                                 </div>
 
