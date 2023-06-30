@@ -10,12 +10,19 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     
                 <div class="p-0 text-gray-900">
-                    <div class="card">
+                    @if($post->category_id == 1)
+                        <div class="card" style="background-color: rgba(0, 255, 0, 0.1);">
+                    @elseif($post->category_id == 2)
+                        <div class="card" style="background-color: rgba(0, 0, 255, 0.1);">
+                    @else
+                        <div class="card" style="background-color: rgba(255, 0, 0, 0.1);">
+                    @endif
+
                         <div class="card-header">
-                            Featured
+                            投稿 No.{{$post->id}}
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">{{$post->title}}</h5>
+                            <h5 class="card-title" style="font-weight: bold">{{$post->title}}</h5>
                             <h6 class="card-title">投稿者：{{$post->user->name}}</h6>
                             <h6 class="card-title">カテゴリー：{{$post->category->category_name}}</h6>
                             <div class="card">

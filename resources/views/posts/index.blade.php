@@ -1,45 +1,38 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('掲示版') }}
-        </h2>
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <h2 class="font-mono font-bold text-4xl text-cyan-600 leading-tight bg-gradient-to-r from-green-500 via-blue-500 to-pink-500 bg-clip-text text-transparent">
+                {{ __('原作・作画マッチング掲示版') }}
+            </h2>
+
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+            <form method="get" action ="{{ route('posts.search')}}">
+                {{csrf_field()}}
+                <div>
+                <input type="text" class="form-control-sm input-lg" placeholder="投稿内容を検索" name="search_query"/>
+                <span class="input-group-btn" style = "position: relative; right: -0px; top: -1px;">
+                    <button class="btn btn-info btn-sm" type="submit">
+                        <i class="fa fa-search fa-sm"></i>
+                    </button>
+                </span>
+                </div>
+            </form>
     </x-slot>
 
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+   
     <div class = "card-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h6 class = "card-title" style = "font-weight: bold;">検索フォーム</h6>
-                    <div id="custom-search-input">
-                        <div class="input-group col-md-12">
-                            <form method="get" action ="{{ route('posts.search')}}">
-                                {{csrf_field()}}
-                                <input type="text" class="form-control input-lg" placeholder="Buscar" name="search_query"/>
-                                <span class="input-group-btn" style = "position: relative; right: -186px; top: -38px;">
-                                    <button class="btn btn-info" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         @isset($search_result)
-        <div style = "font-weight: bold;">{{ $search_result }}</div>
+            <div style = "font-weight: bold;">{{ $search_result }}</div>
         @endisset
-    </div>
-
-
-    <div class="py-2">
         @if(session('err_msg'))
-        <p class="text_danger" style="color: blue;">
+        <p class="text_danger" style="color:red;">
             {{session('err_msg')}}
         </p>
         @endif
+    </div>
+
+    <div class="py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 
@@ -58,7 +51,7 @@
                             投稿 No.{{$post->id}}
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">{{$post->title}}</h5>
+                            <h5 class="card-title" style="font-weight: bold">{{$post->title}}</h5>
                             <span class="card-title">
                                 投稿者：
                                 <a href = "{{route('users.show', $post->user_id)}}">
