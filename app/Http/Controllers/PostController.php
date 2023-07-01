@@ -21,10 +21,14 @@ class PostController extends Controller
             $posts = Post::latest()->where('category_id', $q['category_id'])->paginate(5);
             $posts -> load('category', 'user');
             // dd($posts);
+            $category_name = Category::find($q['category_id'])->category_name;
+            $search_result = '['.$category_name.']カテゴリーの投稿を表示しています('.$posts->total()."件)"; 
+
 
             return view('posts.index',[
                 'posts' => $posts,
                 'category_id' => $q['category_id'],
+                'search_result' => $search_result,
             ]);
         }else{
             $posts = Post::latest()->paginate(5);
