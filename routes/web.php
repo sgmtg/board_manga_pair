@@ -27,7 +27,7 @@ Route::resource('comments', CommentController::class)->middleware('auth');
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 // Route::get('/', [PostController::class, 'index'])->name('posts.index');
 
 Route::get('/dashboard', function () {
