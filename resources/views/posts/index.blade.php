@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div style="display: flex; align-items: baseline; justify-content: space-between;">
             <h2 class="font-mono font-bold text-4xl text-cyan-600 leading-tight bg-gradient-to-r from-green-500 via-blue-500 to-pink-500 bg-clip-text text-transparent">
-                {{ __('原作・作画マッチング掲示版') }}
+                {{ __('原作・作画マッチング掲示板') }}
             </h2>
 
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
