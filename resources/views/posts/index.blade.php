@@ -40,9 +40,9 @@
                 <div class="p-6 text-gray-900">
 
                     @if($post->category_id == 1)
-                    <div class="card" style="background-color: rgba(0, 255, 0, 0.1);">
+                    <div class="card" style="background-color: rgba(0, 0, 255, 0.1);">
                         @elseif($post->category_id == 2)
-                        <div class="card" style="background-color: rgba(0, 0, 255, 0.1);">
+                        <div class="card" style="background-color: rgba(0, 255, 0, 0.1);">
                             @else
                             <div class="card" style="background-color: rgba(255, 0, 0, 0.1);">
                                 @endif
