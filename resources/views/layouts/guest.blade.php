@@ -41,6 +41,15 @@
         <div class="w-full sm:max-w-md mt-4 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>
+
+        @if (isset($auth))
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $auth }}
+
+            </div>
+        @endif
+
+
     </div>
 </body>
 
