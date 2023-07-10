@@ -25,7 +25,7 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
             <div>
-                <a href="{{ route('welcome') }}">
+                <a href="{{ route('posts.index') }}">
                     <img src="{{ asset('images/icon2.png')}}" alt="icon">
                 </a>
             </div>
