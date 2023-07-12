@@ -13,18 +13,20 @@
         </div>
         <div class="card-body">
             <h5 class="card-title" style="font-weight: bold">{{$post->title}}</h5>
-            <span class="card-title pr-5 semibold">
-                投稿者：
-                <a href="{{route('users.show', $post->user_id)}}">
-                    {{$post->user->name}}
-                </a>
-            </span>
-            <span class="card-title">
-                カテゴリー：
-                <a href="{{route('posts.index', ['category_id'=> $post->category_id])}}">
-                    {{$post->category->category_name}}
-                </a>
-            </span>
+            <div class="">
+                <span class="card-title pr-5 text-lg">
+                    投稿者：
+                    <a href="{{route('users.show', $post->user_id)}}" class="font-semibold">
+                        {{$post->user->name}}
+                    </a>
+                </span>
+                <span class="card-title text-base">
+                    カテゴリー：
+                    <a href="{{route('posts.index', ['category_id'=> $post->category_id])}}" class="font-semibold">
+                        {{$post->category->category_name}}
+                    </a>
+                </span>
+            </div>
             <div class="card" style="background-color: rgba(255, 0, 0, 0);">
                 <div class="card-body">
                     <p class="card-text">{{$post->content}}</p>
@@ -32,7 +34,7 @@
 
                 </div>
             </div>
-            <h6Z>投稿日時：{{$post->updated_at}}</h6>
+            <h6 class="pt-2">投稿日時：{{$post->updated_at}}</h6>
 
         </div>
     </div>
