@@ -22,7 +22,7 @@
                         {{ __('募集を探す') }}
                     </x-nav-link>
                 </div>
-                @auth
+            @auth
             <div class="space-x-8 -my-px ml-10 flex items-center">
                 <div>
                 <a href={{route('posts.create')}} class='inline-flex items-center px-3 py-2 border-2 border-gray-400 text-sm leading-4 font-medium rounded-md text-gray-800 bg-gray-200 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">'>
@@ -127,8 +127,9 @@
                 @if (Route::has('register'))
                 <x-responsive-nav-link :href="route('register')">新規登録</x-responsive-nav-link>
                 @endif
-                @endauth
+                
             </div>
         </div>
+        @endauth
     </div>
 </nav>
