@@ -24,7 +24,7 @@ class PostRequest extends FormRequest
         return [
             'title'=>'required|max:100',
             'content'=>'required',
-            'user_id'=>'required|numeric',
+            'user_id'=>'nullable|numeric',
             'category_id'=>'required|numeric',
         ];
     }

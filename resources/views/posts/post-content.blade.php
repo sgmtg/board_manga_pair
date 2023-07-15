@@ -16,9 +16,13 @@
             <div class="">
                 <span class="card-title pr-5 text-lg">
                     投稿者：
+                    @if($post->user)
                     <a href="{{route('users.show', $post->user_id)}}" class="font-semibold">
                         {{$post->user->name}}
                     </a>
+                    @else
+                        <span class="font-semibold">匿名投稿</span>
+                    @endif
                 </span>
                 <span class="card-title text-base">
                     カテゴリー：
