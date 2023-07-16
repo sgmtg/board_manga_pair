@@ -21,7 +21,7 @@
                         {{$post->user->name}}
                     </a>
                     @else
-                        <span class="font-semibold">匿名投稿</span>
+                        <span class="font-semibold">non-user</span>
                     @endif
                 </span>
                 <span class="card-title text-base">
@@ -39,7 +39,6 @@
                 </div>
             </div>
             <h6 class="pt-2">投稿日時：{{$post->updated_at}}</h6>
-
         </div>
     </div>
 </div>
