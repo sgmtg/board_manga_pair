@@ -22,7 +22,7 @@ class CommentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id'=>'required|numeric',
+            'user_id'=>'nullable|numeric',
             'post_id'=>'required|numeric',
             'comment'=>'required'
         ];
