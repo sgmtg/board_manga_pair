@@ -44,4 +44,12 @@
             </x-primary-button>
         </div>
     </form>
+    <x-slot name="auth">
+        <div class="p-3">
+            @if (Route::has('register'))
+            <span class="text-base font-semibold text-gray-500">ユーザ登録がまだの方：</span>
+            <a href="{{ route('register') }}" class="text-base py-1 px-4 ml-1 border-2 border-gray-300 font-semibold text-gray-400 bg-white rounded-md hover:text-gray-600 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">新規登録</a>
+            @endif
+        </div>
+    </x-slot>
 </x-guest-layout>

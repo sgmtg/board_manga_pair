@@ -28,6 +28,6 @@
             @endif
             @endauth
         </div>
-        @endif
+    @endif
     </x-slot>
 </x-guest-layout>
