@@ -5,7 +5,15 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="card-body">
+        @if(session('status'))
+        <p class="text_danger" style="color:red;">
+            {{session('status')}}
+        </p>
+        @endif
+    </div>
+
+    <div class="py-2">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             @include('posts.post-content')
             <div class="p-6">
