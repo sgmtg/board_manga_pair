@@ -32,7 +32,7 @@
                             @endif
                             <span class="text-gray-400">さんからのコメント</span>
                         </div>
-                        <h6 class="pt-2">{{$post->updated_at}}</h6>
+                        <h6 class="pt-2">{{$comment->updated_at}}</h6>
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{$comment->comment}}</p>
