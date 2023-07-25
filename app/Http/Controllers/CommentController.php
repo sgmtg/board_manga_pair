@@ -20,9 +20,9 @@ class CommentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $q = \Request::query();
+        $q = $request->query();
         return view('comments.create',['post_id'=>$q['post_id']]);
 
     }

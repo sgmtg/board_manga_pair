@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Post;
 use App\Models\Category;
@@ -13,9 +14,9 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $q = \Request::query();
+        $q = $request->query();
         
         if(isset($q['category_id'])){
             $posts = Post::latest()->where('category_id', $q['category_id'])->paginate(5);
@@ -67,7 +68,7 @@ class PostController extends Controller
         //登録
         $post = $post->create($input);
         // Post::create($inputs);でもよい
-        \Session::flash('err_msg', '新規投稿が完了しました!');
+        Session::flash('err_msg', '新規投稿が完了しました!');
         return redirect()->route('posts.index');;
     }
 
