@@ -68,7 +68,7 @@ class PostController extends Controller
         //登録
         $post = $post->create($input);
         // Post::create($inputs);でもよい
-        Session::flash('err_msg', '新規投稿が完了しました!');
+        Session::flash('status', '新規投稿が完了しました!');
         return redirect()->route('posts.index');;
     }
 

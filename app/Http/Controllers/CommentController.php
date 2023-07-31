@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+
 
 use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
@@ -39,7 +41,7 @@ class CommentController extends Controller
         $comment = $comment->create($input);
         // Comment::create($input);でもよい
                  
-        // \Session::flash('err_msg', '新規コメントが完了しました!');
+        Session::flash('status', '新規コメントが完了しました!');
 
         $url = route('posts.show', $comment->post_id);
         $postOwner = $comment->post->user;  // ユーザ登録されていない場合nullになる

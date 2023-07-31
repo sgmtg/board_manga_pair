@@ -26,9 +26,9 @@
         @isset($search_result)
         <div style="font-weight: bold;">{{ $search_result }}</div>
         @endisset
-        @if(session('err_msg'))
+        @if(session('status'))
         <p class="text_danger" style="color:red;">
-            {{session('err_msg')}}
+            {{session('status')}}
         </p>
         @endif
     </div>
