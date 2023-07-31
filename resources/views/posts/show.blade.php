@@ -5,7 +5,15 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="card-body">
+        @if(session('status'))
+        <p class="text_danger" style="color:red;">
+            {{session('status')}}
+        </p>
+        @endif
+    </div>
+
+    <div class="py-2">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             @include('posts.post-content')
             <div class="p-6">
@@ -32,7 +40,7 @@
                             @endif
                             <span class="text-gray-400">さんからのコメント</span>
                         </div>
-                        <h6 class="pt-2">{{$post->updated_at}}</h6>
+                        <h6 class="pt-2">{{$comment->updated_at}}</h6>
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{$comment->comment}}</p>
