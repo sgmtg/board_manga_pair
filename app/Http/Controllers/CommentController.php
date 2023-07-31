@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
+use App\Mail\NewCommentMail;
 
 class CommentController extends Controller
 {
@@ -38,6 +40,14 @@ class CommentController extends Controller
         // Comment::create($input);でもよい
                  
         // \Session::flash('err_msg', '新規コメントが完了しました!');
+
+        $url = route('posts.show', $comment->post_id);
+        $postOwner = $comment->post->user;  // ユーザ登録されていない場合nullになる
+        if ($postOwner) {
+            $commenterName = $comment->user? $comment->user->name : 'non-user';
+            Mail::to($postOwner->email)->send(new NewCommentMail($commenterName, $postOwner->name, $url));
+        }
+
 
         // return redirect('posts/'.$comment->post_id);//これでもよい
         return redirect()->route('posts.show', $comment->post_id);
