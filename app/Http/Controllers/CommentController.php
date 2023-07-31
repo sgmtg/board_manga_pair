@@ -50,7 +50,6 @@ class CommentController extends Controller
             Mail::to($postOwner->email)->send(new NewCommentMail($commenterName, $postOwner->name, $url));
         }
 
-
         // return redirect('posts/'.$comment->post_id);//これでもよい
         return redirect()->route('posts.show', $comment->post_id);
     }
