@@ -24,6 +24,9 @@ return [
     ],
     'boolean' => ':attributeは、trueかfalseを指定してください。',
     'can' => ':attributeに権限のない値が含まれています。',
+    'category_id' => [
+        'numeric' => 'カテゴリーを選択してください。'
+    ],
     'confirmed' => ':attributeと確認フィールドが一致していません。',
     'current_password' => 'パスワードが正しくありません。',
     'date' => ':attributeには有効な日付を指定してください。',
@@ -161,6 +164,10 @@ return [
         'terms' => [
             'required' => '登録には規約への同意が必須となります。',
         ],
+        'category_id' => [
+            'required' => 'カテゴリーを選択してください。',
+            'numeric'  => 'カテゴリーを選択してください。',
+        ],
     ],
 
     /*
@@ -188,6 +195,7 @@ return [
         'created_at' => '作成日',
         'creator' => '作成者',
         'current_password' => '現在のパスワード',
+        'category_id' => 'カテゴリー',
         'date' => '日付',
         'date_of_birth' => '生年月日',
         'day' => '日',
