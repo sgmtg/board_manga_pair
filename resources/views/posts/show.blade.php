@@ -15,7 +15,7 @@
 
     <div class="py-2">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            @include('posts.post-content')
+            @include('posts.post-show')
             <div class="p-6">
                 <a href="{{ route('comments.create',['post_id'=> $post->id]) }}" class="btn btn-primary" style="background-color:rgba(0,0,0,0.5); font-weight: bold; border:none;">この投稿にコメントをする</a>
             </div>

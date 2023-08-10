@@ -14,7 +14,7 @@
                         <div class="card-header">
                             
                         </div>
-                        <div class="card-body">
+                        <div class="card-body bg-gray-300 font-semibold">
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 <ul>
@@ -28,17 +28,12 @@
                                 {{csrf_field()}}
 
                                 <div class="form-group">
-                                    <label for="exampleInputTitle">タイトル</label>
-                                    <input type="text" class="form-control" id="exampleInputTitle" placeholder="title" name="title">
+                                    <label for="exampleInputTitle">タイトル</label><span style="color:#f00; font-size: small;"> (必須)</span>
+                                    <input type="text" class="form-control" id="exampleInputTitle" placeholder="" name="title" value="{{ old('title')}}">
                                 </div>
 
-                                <!-- <div class="form-group">
-                                    <label for="exampleFormControlFile1">Example file input</label>
-                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
-                                </div> -->
-
-                                <div class="form-group">
-                                        <label for="exampleFormControlSelect1">カテゴリー</label>
+                                <div class="form-group flex-1">
+                                        <label for="exampleFormControlSelect1">カテゴリー</label><span style="color:#f00; font-size: small;"> (必須)</span>
                                         <select class="form-control" id="exampleFormControlSelect1" name="category_id">
                                             <option selected="">選択してください</option>   
                                             @foreach($categories as $category)
@@ -46,12 +41,48 @@
                                             @endforeach
                                         </select>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="comment">投稿内容:</label>
-                                    <textarea class="form-control" rows="5" id="comment" name="content"></textarea>
+                                <div class="flex">
+                                    <div class="form-group flex-1 pr-10">
+                                            <label for="age">年齢</label>
+                                            <select class="form-control" id="age" name="age">
+                                                <option value="0">非公開</option>
+                                                <option value="1">学生</option>
+                                                <option value="2">20代</option>
+                                                <option value="3">30代以上</option>
+                                            </select>
+                                    </div>
+                                    <div class="form-group flex-1">
+                                            <label for="sex">性別</label>
+                                            <select class="form-control" id="sex" name="sex">
+                                                <option value="0">非公開</option>
+                                                <option value="1">男性</option>
+                                                <option value="2">女性</option>
+                                                <option value="9">その他</option>
+                                            </select>
+                                    </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label for="content">自由記述欄：</label><span style="color:#f00; font-size: small;"> (必須)</span>
+                                    <textarea class="form-control" rows="5" id="content" placeholder="" name="content">{{ old('content') }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="genre">描きたいジャンル</label>
+                                    <input type="text" class="form-control" id="genre" placeholder="SF/少女漫画/バトル/ラブコメ/ギャグ/ホラー/R18...などなど" name="genre" value="{{ old('genre') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="favorite">好きな作品</label>
+                                    <input type="text" class="form-control" id="favorite" placeholder="" name="favorite"  value="{{ old('favorite') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="twitter">Twitter（アカウントのユーザ名）</label>
+                                    <input type="text" class="form-control" id="twitter" placeholder="@より下の部分を記入してください" name="twitter"  value="{{ old('twitter') }}">
+                                </div>                                 
+                                <div class="form-group">
+                                    <label for="url">その他URL（ホームページなど）</label>
+                                    <input type="text" class="form-control" id="url" placeholder="urlを入力してください" name="url"  value="{{ old('url') }}">
+                                </div>     
+ 
                                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">
 
                                 <button type="submit" class="btn btn-primary">投稿</button>

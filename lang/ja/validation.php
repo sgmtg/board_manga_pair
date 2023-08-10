@@ -190,7 +190,7 @@ return [
         'birthday' => '誕生日',
         'body' => '本文',
         'city' => '市',
-        'content' => 'コンテンツ',
+        'content' => '自由記述欄',
         'country' => '国',
         'created_at' => '作成日',
         'creator' => '作成者',
