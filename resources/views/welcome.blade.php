@@ -6,10 +6,10 @@
             </a>
         </div>
         <div class="p-3">
-            <a href="{{ route('posts.index', ['category_id'=> 2]) }}" class="text-3xl px-4 font-semibold text-green-300 hover:text-green-500 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">
+            <a href="{{ route('posts.index', ['category_id'=> 2]) }}" class="text-xl sm:text-3xl px-4 font-semibold text-green-300 hover:text-green-500 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">
                 原作を探す
             </a>
-            <a href="{{ route('posts.index', ['category_id'=> 1]) }}" class="text-3xl px-4 font-semibold text-blue-300 hover:text-blue-500 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">
+            <a href="{{ route('posts.index', ['category_id'=> 1]) }}" class="text-xl sm:text-3xl px-4 font-semibold text-blue-300 hover:text-blue-500 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">
                 作画を探す
             </a>
         </div>

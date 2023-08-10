@@ -19,7 +19,7 @@
                 </div>
                 <div class="space-x-8 -my-px ml-10 flex">
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
-                        {{ __('募集を探す') }}
+                        {{ __('トップ') }}
                     </x-nav-link>
                 </div>
             <div class="space-x-8 -my-px ml-10 flex items-center">

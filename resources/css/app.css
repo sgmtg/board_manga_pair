@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+div label {
+    margin-bottom: 0px;
+}
+
+div .form-group {
+    margin-bottom: 30px;
+}

@@ -35,7 +35,7 @@
              
 
                                 <div class="form-group">
-                                    <label for="comment">コメント内容:</label>
+                                    <label for="comment"></label>
                                     <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
                                 </div>
 
@@ -43,7 +43,7 @@
                                 <input type="hidden" name="post_id" value="{{ $post_id }}">
 
 
-                                <button type="submit" class="btn btn-primary">コメントする</button>
+                                <button type="submit" class="btn btn-primary" style="background-color:rgba(0,0,0,0.5); font-weight: bold; border:none;">コメントする</button>
                             </form>   
                         </div>
                     </div>
