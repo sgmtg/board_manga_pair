@@ -65,11 +65,22 @@ class PostController extends Controller
         // $inputs = $request->all();だと余計な属性があるかもしれない
         $post = new Post;
         $input = $request->only($post->getFillable());
+
+
+        if ($request->hasFile('image')) {
+            // 画像を'storage/app/public/images'ディレクトリに保存
+            $path = $request->file('image')->store('images', 'public');
+    
+            // 保存した画像のパスをデータベースに保存
+            $input['image'] = $path; 
+        }        
+        
         //登録
         $post = $post->create($input);
         // Post::create($inputs);でもよい
+
         Session::flash('status', '新規投稿が完了しました!');
-        return redirect()->route('posts.index');;
+        return redirect()->route('posts.index');
     }
 
     /**
