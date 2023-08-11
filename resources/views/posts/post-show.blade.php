@@ -83,7 +83,9 @@
                         <span class="card-title text-lg">
                             <div>作風：</div>
                         </span>
-                        <img src="{{ asset('storage/' . $post->image) }}" alt="Uploaded Image" class="max-w-full object-cover mx-2 pb-6" style="max-height: 240px;">
+                        <a href="{{ asset('storage/' . $post->image) }}" data-lightbox="image-1" data-title="">
+                            <img src="{{ asset('storage/' . $post->image) }}" alt="Uploaded Image" class="max-w-full object-cover mx-2 pb-6" style="max-height: 240px;">
+                        </a>
                     @endif
                     </div>
                 </div>
@@ -96,10 +98,10 @@
                     <p class="card-text">{{$post->content}}</p>
                 </div>
             </div>
-            <hr>
-            <div>
+            
+            <div class="mt-3">
                 <span class="card-title text-lg {{$selectedTextColor}}">
-                    描きたいジャンル・・・
+                    ・描きたいジャンル：
                 </span>
                 @if($post->genre)
                 {{$post->genre}}
@@ -109,33 +111,33 @@
             </div>
             <div>
                 <span class="card-title text-lg {{$selectedTextColor}}">
-                    好きな漫画 ・・・・・・
+                    ・好きな漫画：
                 </span>
                 @if($post->favorite)
                 {{$post->favorite}}
                 @else
-                -
+                <span class="pl-3">-</span>
                 @endif
             </div>
             <div>
-                <span class="card-title pr-5 text-lg {{$selectedTextColor}}">
-                    Twitter・・・・・・・・
-                    @if($post->twitter)
-                    <a href="https://twitter.com/{{$post->twitter}}" rel="nofollow">{{$post->twitter}}</a>
-                    @else
-                    -
-                    @endif
+                <span class="card-title text-lg {{$selectedTextColor}}">
+                    ・Twitter：
                 </span>
+                @if($post->twitter)
+                <a href="https://twitter.com/{{$post->twitter}}" rel="nofollow">{{$post->twitter}}</a>
+                @else
+                <span class="pl-3">-</span>
+                @endif
             </div>
             <div>
-                <span class="card-title pr-5 text-lg {{$selectedTextColor}}">
-                    その他URL・・・・・・
-                    @if($post->url)
-                    <a href="{{$post->url}}" rel="nofollow">{{$post->url}}</a>
-                    @else
-                    -
-                    @endif
+                <span class="card-title text-lg {{$selectedTextColor}}">
+                    ・その他URL：
                 </span>
+                @if($post->url)
+                <a href="{{$post->url}}" rel="nofollow">{{$post->url}}</a>
+                @else
+                <span class="pl-3">-</span>
+                @endif
             </div>
         </div>
 

@@ -39,7 +39,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 @foreach($posts as $post)
-                @include('posts.post-content')
+                @include('posts.post-thumbnail')
                 @endforeach
 
                 <div class="flex flex-col justify-center items-center">
