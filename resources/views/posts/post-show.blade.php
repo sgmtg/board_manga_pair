@@ -95,7 +95,9 @@
             <span class="text-lg">自由記述欄：</span>
             <div class="border-2 rounded border-gray-300" style="background-color: rgba(0, 0, 0, 0);">
                 <div class="card-body">
-                    <p class="card-text">{{$post->content}}</p>
+                    <p class="card-text">
+                            {!!  nl2br(e($post->content)) !!}
+                    </p>
                 </div>
             </div>
             

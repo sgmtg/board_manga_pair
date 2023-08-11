@@ -1,4 +1,7 @@
 <x-guest-layout>
+    <div class="text-gray-700 text-2xl font-bold mb-3">新規登録</div>
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

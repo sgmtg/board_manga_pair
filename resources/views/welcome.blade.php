@@ -20,7 +20,7 @@
         <!-- <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">表示位置 -->
         <div class="p-3">
             @auth
-            <a href="{{ url('/dashboard') }}" class="text-xl p-3 border-2  border-gray-300 font-semibold text-gray-400 bg-white rounded-md hover:text-gray-600 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">Dashboard</a>
+            <a href="{{ url('/dashboard') }}" class="text-xl p-3 border-2  border-gray-300 font-semibold text-gray-400 bg-white rounded-md hover:text-gray-600 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">MyPage</a>
             @else
             <a href="{{ route('login') }}" class="text-xl py-1 px-4 border-2 border-gray-300 font-semibold text-gray-400 bg-white rounded-md hover:text-gray-600 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">ログイン</a>
             @if (Route::has('register'))

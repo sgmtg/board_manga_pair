@@ -128,6 +128,9 @@ class PostController extends Controller
         $search_query = $request->search_query;
         $posts = Post::latest()->where('title', 'like', "%$search_query%")
         ->orWhere('content', 'like', "%$search_query%")
+        ->orWhereHas('user', function($query) use ($search_query) {
+            $query->where('name', 'like', "%$search_query%");
+        })
         ->paginate(5);
 
         $search_result = '"'.$search_query.'"の検索結果：'.$posts->total()."件"; 

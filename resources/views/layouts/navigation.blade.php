@@ -12,14 +12,14 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
                 <div class="space-x-8 -my-px ml-10 flex">
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('トップ') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('MyPage') }}
                     </x-nav-link>
                 </div>
             <div class="space-x-8 -my-px ml-10 flex items-center">
@@ -88,9 +88,10 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2  space-y-1">
+        <div class="pt-0  space-y-0">
+        <hr>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('MyPage') }}
             </x-responsive-nav-link>
         </div>
 
@@ -120,8 +121,9 @@
         </div>
         @else
         <div class="pt-0 pb-1 border-t border-gray-200">
-            <div class="mt-3 space-y-1">
+            <div class="mt-2 space-y-1">
                 <x-responsive-nav-link :href="route('login')">ログイン</x-responsive-nav-link>
+                <hr>
                 @if (Route::has('register'))
                 <x-responsive-nav-link :href="route('register')">新規登録</x-responsive-nav-link>
                 @endif
