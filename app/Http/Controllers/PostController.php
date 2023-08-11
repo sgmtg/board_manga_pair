@@ -34,7 +34,7 @@ class PostController extends Controller
         }else{
             $posts = Post::latest()->paginate(5);
             $posts -> load('category', 'user');
-            // dd($posts);
+
 
             return view('posts.index',[
                 'posts' => $posts,
