@@ -47,7 +47,10 @@ class CommentController extends Controller
         $postOwner = $comment->post->user;  // ユーザ登録されていない場合nullになる
         if ($postOwner) {
             $commenterName = $comment->user? $comment->user->name : 'non-user';
-            Mail::to($postOwner->email)->send(new NewCommentMail($commenterName, $postOwner->name, $url));
+            // コメント主が投稿主と同じ場合は通知しない
+            if ($postOwner->id !== $comment->user_id){
+                Mail::to($postOwner->email)->send(new NewCommentMail($commenterName, $postOwner->name, $url));
+            }
         }
 
         // return redirect('posts/'.$comment->post_id);//これでもよい

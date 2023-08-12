@@ -37,8 +37,9 @@ class UserController extends Controller
      */
     public function show(User $user)#string $idを削除
     {
-        $user->load('posts');
-        // dd($user);
+        $user->load(['posts' => function ($query) {
+            $query->latest();
+        }]);
         return view('users.show',['user'=>$user]);
     }
 
