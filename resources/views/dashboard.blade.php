@@ -26,7 +26,7 @@
     </div>
 
         
-    <div id="postsDiv" class="bg-green-100 flex flex-col items-center mb-10 mx-2 sm:mx-32 pt-6 pb-6">
+    <div id="postsDiv" class="bg-green-100 flex flex-col items-center mb-10 sm:mx-32 pt-6 pb-6">
         <!-- あなたの投稿 -->
         @foreach($my_posts as $post)
         <div class="bg-gray-300 w-3/5 m-2 px-4 border rounded">
@@ -40,7 +40,7 @@
         @endforeach
     </div>
 
-    <div id="commentsDiv" class="bg-blue-100 flex flex-col items-center mb-10 mx-2 sm:mx-32 pt-6 pb-6" style="display: none;">
+    <div id="commentsDiv" class="bg-blue-100 flex flex-col items-center mb-10 sm:mx-32 pt-6 pb-6" style="display: none;">
         <!-- 過去にあなたがコメントした投稿 -->
         @foreach($commented_posts as $post)
         <div class="bg-gray-300 w-3/5 m-2 px-4 border rounded">
