@@ -10,6 +10,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     
                 <div class="p-6 text-gray-900">
+                    @auth
+
+                    @else
+                    <div class= "text-cyan-700 pb-2">
+                    <span>・ログインして投稿すると、</span>
+                    <span> コメントがついた際にメールでお知らせが届きます。</span>
+                    </div>
+                    @endauth
                     <div class="card">
                         <div class="card-header">
                             
@@ -37,7 +45,7 @@
                                         <select class="form-control" id="exampleFormControlSelect1" name="category_id">
                                             <option selected="">選択してください</option>   
                                             @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                            <option value="{{$category->id}}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{$category->category_name}}</option>
                                             @endforeach
                                         </select>
                                 </div>

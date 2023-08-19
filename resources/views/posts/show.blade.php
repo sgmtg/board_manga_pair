@@ -43,7 +43,9 @@
                         <div class="text-right text-gray-400">{{$comment->updated_at}}</div>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">{{$comment->comment}}</p>
+                        <p class="card-text">
+                            {!!  nl2br(e($comment->comment)) !!}
+                        </p>
                     </div>
                 </div>
                 <br>

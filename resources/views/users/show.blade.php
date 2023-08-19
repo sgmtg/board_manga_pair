@@ -15,7 +15,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 
                 @foreach($user->posts as $post)
-                @include('posts.post-content')
+                @include('posts.post-thumbnail')
                 @endforeach
                     
                 

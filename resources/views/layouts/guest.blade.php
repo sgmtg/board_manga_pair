@@ -25,31 +25,32 @@
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
-    <div class="min-h-screen flex flex-col justify-center items-center bg-gray-100">
-        <div class="mb-4">
-            <a href="{{ route('posts.index') }}">
-                <img src="{{ asset('images/icon2.png')}}" alt="icon">
-            </a>
-        </div>
-
-        @if(session('err_msg'))
-        <p class="font-semibold p-2 text-red-400 ">
-            {{session('err_msg')}}
-        </p>
-        @endif
-
-        <div class="w-full sm:max-w-md mt-4 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            {{ $slot }}
-        </div>
-
-        @if (isset($auth))
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                {{ $auth }}
-
+    <div class="bg-gray-100 overflow-x-auto">
+        <div class="min-w-[366px] min-h-screen flex flex-col justify-center items-center ">
+            <div class="mb-4">
+                <a href="{{ route('posts.index') }}">
+                    <img src="{{ asset('images/icon2.png')}}" alt="icon">
+                </a>
             </div>
-        @endif
+        <!-- Session Status -->
 
+            @if(session('err_msg'))
+            <p class="font-semibold p-2 text-red-400 ">
+                {{session('err_msg')}}
+            </p>
+            @endif
 
+            <div class="w-full sm:max-w-md mt-4 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+                {{ $slot }}
+            </div>
+
+            @if (isset($auth))
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $auth }}
+                </div>
+            @endif
+
+        </div>
     </div>
 </body>
 

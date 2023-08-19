@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Post;
 use App\Models\Category;
 use App\Http\Requests\PostRequest;
@@ -34,7 +36,7 @@ class PostController extends Controller
         }else{
             $posts = Post::latest()->paginate(5);
             $posts -> load('category', 'user');
-            // dd($posts);
+
 
             return view('posts.index',[
                 'posts' => $posts,
@@ -60,22 +62,23 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        // dd($request);
-        //ブログのデータを受け取る
-        // $inputs = $request->all();だと余計な属性があるかもしれない
         $post = new Post;
         $input = $request->only($post->getFillable());
 
 
         if ($request->hasFile('image')) {
-            // 画像を'storage/app/public/images'ディレクトリに保存
-            $path = $request->file('image')->store('images', 'public');
-    
-            // 保存した画像のパスをデータベースに保存
-            $input['image'] = $path; 
+            // 画像をaws s3に保存
+            if (app()->isLocal() || app()->runningUnitTests()) {
+                // ローカル環境の場合
+                $path = Storage::disk('s3')->put('/test', $request->file('image'));
+            } else {
+                // 本番環境の場合　aws s3に保存
+                $path = Storage::disk('s3')->put('/production', $request->file('image'));
+            }
+            $input['image'] = $path;
         }        
         
-        //登録
+        // 登録
         $post = $post->create($input);
         // Post::create($inputs);でもよい
 
@@ -128,6 +131,9 @@ class PostController extends Controller
         $search_query = $request->search_query;
         $posts = Post::latest()->where('title', 'like', "%$search_query%")
         ->orWhere('content', 'like', "%$search_query%")
+        ->orWhereHas('user', function($query) use ($search_query) {
+            $query->where('name', 'like', "%$search_query%");
+        })
         ->paginate(5);
 
         $search_result = '"'.$search_query.'"の検索結果：'.$posts->total()."件"; 

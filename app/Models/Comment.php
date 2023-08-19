@@ -18,6 +18,14 @@ class Comment extends Model
         'post_id',
         'comment',
     ];
+
+    protected $casts = [
+        'user_id' => 'integer',
+        // 他のキャスティング定義もここに追加
+    ];
+
+
+
     public function user(){
         return $this->belongsTo(\App\Models\User::class, 'user_id');
     } 

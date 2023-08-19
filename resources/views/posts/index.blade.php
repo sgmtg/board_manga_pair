@@ -39,16 +39,23 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
                 @foreach($posts as $post)
-                @include('posts.post-content')
+                @include('posts.post-thumbnail')
                 @endforeach
 
-                @isset($category_id)
-                {{ $posts->appends(['category_id' => $category_id])->links()}}
-                @elseif(isset($search_query))
-                {{ $posts->appends(['search_query' => $search_query])->links()}}
-                @else
-                {{ $posts->links()}}
-                @endisset
+                <div class="flex flex-col justify-center items-center">
+                    <div class="">
+                        {{ $posts->total() }}件中{{ $posts->firstItem() }}〜{{ $posts->lastItem() }} 件を表示
+                    </div>
+                    <div class="background-color: #8c8c8c;">    
+                        @isset($category_id)
+                        {{ $posts->appends(['category_id' => $category_id])->links()}}
+                        @elseif(isset($search_query))
+                        {{ $posts->appends(['search_query' => $search_query])->links()}}
+                        @else
+                        {{ $posts->links() }}
+                        @endisset
+                    </div>
+                </div>
 
             </div>
         </div>
