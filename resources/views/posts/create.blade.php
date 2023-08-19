@@ -10,6 +10,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     
                 <div class="p-6 text-gray-900">
+                    @auth
+
+                    @else
+                    <div class= "text-cyan-700 pb-2">
+                    <span>・ログインして投稿すると、</span>
+                    <span> コメントがついた際にメールでお知らせが届きます。</span>
+                    </div>
+                    @endauth
                     <div class="card">
                         <div class="card-header">
                             

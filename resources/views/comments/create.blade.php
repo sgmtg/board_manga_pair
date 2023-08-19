@@ -10,6 +10,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     
                 <div class="p-6 text-gray-900">
+                    @auth
+                    @else
+                    <div class="text-cyan-700 pb-2">
+                        <span>・ログインしてコメントすると、</span>
+                        <span> 自分のコメント履歴を確認できます</span>
+                        
+                    </div>
+                    @endauth
                     <div class="card">
                         <div class="card-header">
                         </div>
