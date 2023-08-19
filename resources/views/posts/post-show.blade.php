@@ -83,8 +83,9 @@
                         <span class="card-title text-lg">
                             <div>作風：</div>
                         </span>
-                        <a href="{{ asset('storage/' . $post->image) }}" data-lightbox="image-1" data-title="">
-                            <img src="{{ asset('storage/' . $post->image) }}" alt="Uploaded Image" class="max-w-full object-cover mx-2 pb-6" style="max-height: 240px;">
+                        <a href="{{Storage::disk('s3')->temporaryUrl($post->image, now()->addMinutes(10))}}" data-lightbox="image-1" data-title="">
+                            {{-- <img src="{{ asset('storage/' . $post->image) }}" alt="Uploaded Image" class="max-w-full object-cover mx-2 pb-6" style="max-height: 240px;"> --}}
+                            <img src="{{Storage::disk('s3')->temporaryUrl($post->image, now()->addMinutes(10))}}" alt="Uploaded Image" class="max-w-full object-cover mx-2 pb-6" style="max-height: 240px;">
                         </a>
                     @endif
                     </div>

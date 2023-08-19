@@ -42,7 +42,8 @@
             <div class="card" style="background-color: rgba(255, 0, 0, 0);">
                 <div class="p-2 sm:m-2" style="position:relative; ">
                     @if($post->image)
-                    <img src="{{ asset('storage/' . $post->image) }}" alt="Uploaded Image" style="padding: 5px; float:right; margin-right: 0; margin-left: auto; max-height:140px; max-width:140px;">
+                    {{-- <img src="{{ asset('storage/' . $post->image) }}" alt="Uploaded Image" style="padding: 5px; float:right; margin-right: 0; margin-left: auto; max-height:140px; max-width:140px;"> --}}
+                    <img src="{{Storage::disk('s3')->temporaryUrl($post->image, now()->addMinutes(1))}}" alt="Uploaded Image" style="padding: 5px; float:right; margin-right: 0; margin-left: auto; max-height:140px; max-width:140px;">
                     @endif
                     {!! mb_strlen($post->content) > 100 ? nl2br(e(mb_substr($post->content, 0, 100))) . '...' : nl2br(e($post->content)) !!}
                     <!-- <a href="{{ route('posts.show', $post->id) }}" class="btn btn-primary" style="float:right; margin-right:5px; margin-bottom:0; background-color:rgba(0,0,0,0.5); font-weight: bold; border:none;">詳細</a> -->
