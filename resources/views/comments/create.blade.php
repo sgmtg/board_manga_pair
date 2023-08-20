@@ -19,7 +19,11 @@
                     @endauth
                     <div class="card">
                         <div class="card-header">
+                            @auth
                             ログイン中（ ユーザ名：{{ Auth::user()->name }} ）
+                            @else
+                            non-user：
+                            @endauth
                         </div>
                         <div class="card-body">
                         @if ($errors->any())
