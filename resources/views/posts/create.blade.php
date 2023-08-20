@@ -13,8 +13,8 @@
                     @auth
 
                     @else
-                    <div class= "text-cyan-700 pb-2">
-                    <span>・ログインして投稿すると、</span>
+                    <div class= "text-cyan-700 pb-2 font-bold">
+                    <span>※ログインして投稿すると、</span>
                     <span> コメントがついた際にメールでお知らせが届きます。</span>
                     </div>
                     @endauth
