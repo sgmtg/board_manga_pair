@@ -19,17 +19,19 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('MyPage') }}
+                        {{ __('Myページ') }}
                     </x-nav-link>
+                    <div class="hidden md:flex items-center">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2DRj1PlOOuEgGg_DZ9maAt1AJruWkFF2_i9sM9N9kh1OoTw/viewform?usp=sf_link" style="color:rgb(80, 80, 80);">開発者へメッセージ</a>
+                    </div>
                 </div>
-            <div class="space-x-8 -my-px ml-10 flex items-center">
-                <div>
-                <a href={{route('posts.create')}} class='inline-flex items-center px-3 py-2 border-2 border-gray-400 text-sm leading-4 font-medium rounded-md text-gray-800 bg-gray-200 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">'>
-                    投稿する </a>
+                <div class="space-x-8 -my-px ml-10 flex items-center">
+                    <div>
+                    <a href={{route('posts.create')}} class='inline-flex items-center px-3 py-2 border-2 border-gray-400 text-sm leading-4 font-medium rounded-md text-gray-800 bg-gray-200 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">'>
+                        投稿する </a>
+                    </div>
                 </div>
             </div>
-            </div>
-
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -89,11 +91,14 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-0  space-y-0">
-        <hr>
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('MyPage') }}
-            </x-responsive-nav-link>
+                {{ __('Myページ') }}
+            </x-responsive-nav-link>            
         </div>
+        <div class="pl-3 pt-1">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2DRj1PlOOuEgGg_DZ9maAt1AJruWkFF2_i9sM9N9kh1OoTw/viewform?usp=sf_link"
+                style="color:rgb(80, 80, 80);">開発者へメッセージ</a>
+        </div>        
 
         <!-- Responsive Settings Options -->
         @auth

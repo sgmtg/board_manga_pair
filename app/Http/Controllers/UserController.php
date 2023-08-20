@@ -60,9 +60,12 @@ class UserController extends Controller
         $postIds = $comments->pluck('post_id');
 
         // post_idの順番に従ってPostモデルからレコードを取得
-        $commented_posts = Post::whereIn('id', $postIds)
-        ->orderByRaw("FIELD(id, " . implode(',', $postIds->toArray()) . ")")
-        ->get();
+        $commented_posts = collect(); // 空のコレクションを作成
+        if(!$postIds->isEmpty()){
+            $commented_posts = Post::whereIn('id', $postIds)
+            ->orderByRaw("FIELD(id, " . implode(',', $postIds->toArray()) . ")")
+            ->get();
+        }
 
         return view('dashboard', [
             'my_posts' => $my_posts,

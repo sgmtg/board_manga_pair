@@ -22,14 +22,14 @@
     </x-slot>
 
 
-
     <div class="card-body">
         @isset($search_result)
         <div style="font-weight: bold;">{{ $search_result }}</div>
         @endisset
         @if(session('status'))
         <p class="text_danger" style="color:red;">
-            {{session('status')}}
+            {{session('status')}}<br>
+            このサイトに関してご意見・ご要望がありましたら、<a href="https://docs.google.com/forms/d/e/1FAIpQLSf2DRj1PlOOuEgGg_DZ9maAt1AJruWkFF2_i9sM9N9kh1OoTw/viewform?usp=sf_link" class="text-blue-600">こちら</a>からお願いします。
         </p>
         @endif
     </div>

@@ -8,7 +8,8 @@
     <div class="card-body">
         @if(session('status'))
         <p class="text_danger" style="color:red;">
-            {{session('status')}}
+            {{session('status')}}<br>
+            このサイトに関してご意見・ご要望がありましたら、<a href="https://docs.google.com/forms/d/e/1FAIpQLSf2DRj1PlOOuEgGg_DZ9maAt1AJruWkFF2_i9sM9N9kh1OoTw/viewform?usp=sf_link" class="text-blue-600">こちら</a>からお願いします。
         </p>
         @endif
     </div>
@@ -16,7 +17,7 @@
     <div class="py-2">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             @include('posts.post-show')
-            <div class="p-6">
+            <div class="px-6 pb-6">
                 <a href="{{ route('comments.create',['post_id'=> $post->id]) }}" class="btn btn-primary" style="background-color:rgba(0,0,0,0.5); font-weight: bold; border:none;">この投稿にコメントをする</a>
             </div>
         </div>

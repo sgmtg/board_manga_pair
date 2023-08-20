@@ -21,7 +21,7 @@ class PostController extends Controller
         $q = $request->query();
         
         if(isset($q['category_id'])){
-            $posts = Post::latest()->where('category_id', $q['category_id'])->paginate(5);
+            $posts = Post::latest()->where('category_id', $q['category_id'])->paginate(10);
             $posts -> load('category', 'user');
             // dd($posts);
             $category_name = Category::find($q['category_id'])->category_name;
@@ -34,7 +34,7 @@ class PostController extends Controller
                 'search_result' => $search_result,
             ]);
         }else{
-            $posts = Post::latest()->paginate(5);
+            $posts = Post::latest()->paginate(10);
             $posts -> load('category', 'user');
 
 
