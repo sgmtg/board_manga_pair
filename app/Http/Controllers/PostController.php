@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Post;
 use App\Models\Category;
@@ -13,12 +16,12 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $q = \Request::query();
+        $q = $request->query();
         
         if(isset($q['category_id'])){
-            $posts = Post::latest()->where('category_id', $q['category_id'])->paginate(5);
+            $posts = Post::latest()->where('category_id', $q['category_id'])->paginate(10);
             $posts -> load('category', 'user');
             // dd($posts);
             $category_name = Category::find($q['category_id'])->category_name;
@@ -31,9 +34,9 @@ class PostController extends Controller
                 'search_result' => $search_result,
             ]);
         }else{
-            $posts = Post::latest()->paginate(5);
+            $posts = Post::latest()->paginate(10);
             $posts -> load('category', 'user');
-            // dd($posts);
+
 
             return view('posts.index',[
                 'posts' => $posts,
@@ -59,16 +62,28 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        // dd($request);
-        //ブログのデータを受け取る
-        // $inputs = $request->all();だと余計な属性があるかもしれない
         $post = new Post;
         $input = $request->only($post->getFillable());
-        //登録
+
+
+        if ($request->hasFile('image')) {
+            // 画像をaws s3に保存
+            if (app()->isLocal() || app()->runningUnitTests()) {
+                // ローカル環境の場合
+                $path = Storage::disk('s3')->put('/test', $request->file('image'));
+            } else {
+                // 本番環境の場合　aws s3に保存
+                $path = Storage::disk('s3')->put('/production', $request->file('image'));
+            }
+            $input['image'] = $path;
+        }        
+        
+        // 登録
         $post = $post->create($input);
         // Post::create($inputs);でもよい
-        \Session::flash('err_msg', '新規投稿が完了しました!');
-        return redirect()->route('posts.index');;
+
+        Session::flash('status', '新規投稿が完了しました!');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -116,6 +131,9 @@ class PostController extends Controller
         $search_query = $request->search_query;
         $posts = Post::latest()->where('title', 'like', "%$search_query%")
         ->orWhere('content', 'like', "%$search_query%")
+        ->orWhereHas('user', function($query) use ($search_query) {
+            $query->where('name', 'like', "%$search_query%");
+        })
         ->paginate(5);
 
         $search_result = '"'.$search_query.'"の検索結果：'.$posts->total()."件"; 

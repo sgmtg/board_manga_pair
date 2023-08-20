@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+
 
 use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
+use App\Mail\NewCommentMail;
 
 class CommentController extends Controller
 {
@@ -20,9 +24,9 @@ class CommentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $q = \Request::query();
+        $q = $request->query();
         return view('comments.create',['post_id'=>$q['post_id']]);
 
     }
@@ -37,7 +41,17 @@ class CommentController extends Controller
         $comment = $comment->create($input);
         // Comment::create($input);でもよい
                  
-        // \Session::flash('err_msg', '新規コメントが完了しました!');
+        Session::flash('status', '新規コメントが完了しました!');
+
+        $url = route('posts.show', $comment->post_id);
+        $postOwner = $comment->post->user;  // ユーザ登録されていない場合nullになる
+        if ($postOwner) {
+            $commenterName = $comment->user? $comment->user->name : 'non-user';
+            // コメント主が投稿主と同じ場合は通知しない
+            if ($postOwner->id !== $comment->user_id){
+                Mail::to($postOwner->email)->send(new NewCommentMail($commenterName, $postOwner->name, $url));
+            }
+        }
 
         // return redirect('posts/'.$comment->post_id);//これでもよい
         return redirect()->route('posts.show', $comment->post_id);

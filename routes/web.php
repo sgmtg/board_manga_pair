@@ -11,7 +11,7 @@ use App\Http\Controllers\CommentController;
 Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
 Route::resource('posts', PostController::class);
 Route::resource('users', UserController::class);
-Route::resource('comments', CommentController::class)->middleware('auth');
+Route::resource('comments', CommentController::class);
 
 
 /*
@@ -30,9 +30,10 @@ Route::get('/', function () {
 })->name('welcome');
 // Route::get('/', [PostController::class, 'index'])->name('posts.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [UserController::class, 'dashboard'])
+->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

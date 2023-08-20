@@ -18,6 +18,13 @@ class Post extends Model
         'category_id',
         'title',
         'content',
+        'sex',
+        'age',
+        'genre',
+        'favorite',
+        'image',
+        'twitter',
+        'url',
     ];
 
     public function category(){

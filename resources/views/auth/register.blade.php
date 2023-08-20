@@ -1,10 +1,13 @@
 <x-guest-layout>
+    <div class="text-gray-700 text-2xl font-bold mb-3">新規登録</div>
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Name').' (あとから変更できます)'"/>
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>

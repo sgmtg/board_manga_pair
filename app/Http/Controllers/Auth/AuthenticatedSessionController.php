@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Session;
+
 
 class AuthenticatedSessionController extends Controller
 {
@@ -43,7 +45,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
         
-        \Session::flash('err_msg', '-- ログアウトしました --');
+        Session::flash('err_msg', '-- ログアウトしました --');
         return redirect('/');
     }
 }

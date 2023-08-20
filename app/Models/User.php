@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Notifications\Registered;
 
 class User extends Authenticatable
 {
@@ -45,4 +46,9 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany(\App\Models\Post::class,'user_id','id');
     } 
+    
+    public function registered($val)
+    {
+        $this->notify(new Registered($val));
+    }
 }

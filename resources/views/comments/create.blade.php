@@ -10,8 +10,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     
                 <div class="p-6 text-gray-900">
+                    @auth
+                    @else
+                    <div class="text-cyan-700 pb-2 font-semibold">
+                        <span>※ログインしてコメントすると、</span>
+                        <span> 自分のコメント履歴を素早く確認できます</span>
+                    </div>
+                    @endauth
                     <div class="card">
                         <div class="card-header">
+                            @auth
+                            ログイン中（ ユーザ名：{{ Auth::user()->name }} ）
+                            @else
+                            non-user：
+                            @endauth
                         </div>
                         <div class="card-body">
                         @if ($errors->any())
@@ -35,7 +47,7 @@
              
 
                                 <div class="form-group">
-                                    <label for="comment">コメント内容:</label>
+                                    <label for="comment"></label>
                                     <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
                                 </div>
 
@@ -43,7 +55,7 @@
                                 <input type="hidden" name="post_id" value="{{ $post_id }}">
 
 
-                                <button type="submit" class="btn btn-primary">コメントする</button>
+                                <button type="submit" class="btn btn-primary" style="background-color:rgba(0,0,0,0.5); font-weight: bold; border:none;">コメントする</button>
                             </form>   
                         </div>
                     </div>

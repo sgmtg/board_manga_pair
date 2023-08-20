@@ -26,6 +26,7 @@ class PostRequest extends FormRequest
             'content'=>'required',
             'user_id'=>'nullable|numeric',
             'category_id'=>'required|numeric',
+            'image' => 'nullable|image|max:33600',
         ];
     }
 }
