@@ -13,7 +13,8 @@
                     @auth
                     @else
                     <div class="text-cyan-700 pb-2 font-semibold">
-                        <span>※ログインしてコメントすると、</span>
+                        <span style="color:rgb(234, 98, 98);">※現在ログインしていません</span><br>
+                        <span>ログインしてコメントすると、</span>
                         <span> 自分のコメント履歴を素早く確認できます</span>
                     </div>
                     @endauth

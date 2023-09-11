@@ -14,7 +14,8 @@
 
                     @else
                     <div class= "text-cyan-700 pb-2 font-bold">
-                    <span>※ログインして投稿すると、</span>
+                    <span style="color:rgb(234, 98, 98);">※現在ログインしていません</span><br>
+                    <span>ログインして投稿すると、</span>
                     <span> コメントがついた際にメールでお知らせが届きます。</span>
                     </div>
                     @endauth
