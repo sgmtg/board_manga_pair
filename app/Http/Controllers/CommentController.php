@@ -11,6 +11,8 @@ use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
 use App\Mail\NewCommentMail;
 
+use App\Jobs\SendNewCommentMail; 
+
 class CommentController extends Controller
 {
     /**
@@ -49,7 +51,10 @@ class CommentController extends Controller
             $commenterName = $comment->user? $comment->user->name : 'non-user';
             // コメント主が投稿主と同じ場合は通知しない
             if ($postOwner->id !== $comment->user_id){
-                Mail::to($postOwner->email)->send(new NewCommentMail($commenterName, $postOwner->name, $url));
+                // Mail::to($postOwner->email)->send(new NewCommentMail($commenterName, $postOwner->name, $url));
+                // 非同期ジョブをディスパッチする
+                dispatch(new SendNewCommentMail($commenterName, $postOwner->name, $url, $postOwner->email));
+
             }
         }
         // return redirect('posts/'.$comment->post_id);//これでもよい
