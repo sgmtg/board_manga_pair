@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        $user->registered($request);
+        $user->registered($request->all());
 
         Auth::login($user);
 
