@@ -71,6 +71,15 @@ return [
             'after_commit' => false,
         ],
 
+        'sqsfifo' => [
+            'driver' => 'sqsfifo',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'prefix' => env('SQS_PREFIX'),
+            'queue' => env('SQS_QUEUE_FIFO'),
+            'region' => env('AWS_DEFAULT_REGION'),
+        ],
+        
     ],
 
     /*
