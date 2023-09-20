@@ -11,6 +11,8 @@ use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
 use App\Mail\NewCommentMail;
 
+use App\Jobs\SendNewCommentMail; 
+
 class CommentController extends Controller
 {
     /**
@@ -43,13 +45,15 @@ class CommentController extends Controller
                  
         Session::flash('status', '新規コメントが完了しました!');
 
-        $url = route('posts.show', $comment->post_id);
         $postOwner = $comment->post->user;  // ユーザ登録されていない場合nullになる
         if ($postOwner) {
             $commenterName = $comment->user? $comment->user->name : 'non-user';
             // コメント主が投稿主と同じ場合は通知しない
             if ($postOwner->id !== $comment->user_id){
-                Mail::to($postOwner->email)->send(new NewCommentMail($commenterName, $postOwner->name, $url));
+                $url = route('posts.show', $comment->post_id);
+                // Mail::to($postOwner->email)->send(new NewCommentMail($commenterName, $postOwner->name, $url));
+                // 非同期ジョブをディスパッチする
+                dispatch(new SendNewCommentMail($commenterName, $postOwner->name, $url, $postOwner->email));
             }
         }
         // return redirect('posts/'.$comment->post_id);//これでもよい
