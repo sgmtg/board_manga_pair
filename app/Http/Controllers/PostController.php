@@ -67,15 +67,17 @@ class PostController extends Controller
 
 
         if ($request->hasFile('image')) {
-            // 画像をaws s3に保存
-            if (app()->isLocal() || app()->runningUnitTests()) {
-                // ローカル環境の場合
-                $path = Storage::disk('s3')->put('/test', $request->file('image'));
-            } else {
-                // 本番環境の場合　aws s3に保存
-                $path = Storage::disk('s3')->put('/production', $request->file('image'));
+            if ($request->file('image')->isValid()) {
+                // 画像をaws s3に保存
+                if (app()->isLocal() || app()->runningUnitTests()) {
+                    // ローカル環境の場合
+                    $path = Storage::disk('s3')->put('/test', $request->file('image'));
+                } else {
+                    // 本番環境の場合　aws s3に保存
+                    $path = Storage::disk('s3')->put('/production', $request->file('image'));
+                }
+                $input['image'] = $path;
             }
-            $input['image'] = $path;
         }        
         
         // 登録
