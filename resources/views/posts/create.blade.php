@@ -92,7 +92,7 @@
                                 </div>  
                                 <div class="form-group">
                                     <label for="twitter">Twitter（アカウントのユーザ名）</label>
-                                    <input type="text" class="form-control" id="twitter" placeholder="@より下の部分を記入してください" name="twitter"  value="{{ old('twitter') }}">
+                                    <input type="text" class="form-control" id="twitter" placeholder="@を含まずに記入してください" name="twitter"  value="{{ old('twitter') }}">
                                 </div>                                 
                                 <div class="form-group">
                                     <label for="url">その他URL（ホームページなど）</label>
