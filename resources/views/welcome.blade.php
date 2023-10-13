@@ -1,15 +1,15 @@
 <x-guest-layout>
-    <div class="relative flex flex-col items-center bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+    <div class="relative flex flex-col items-center bg-dots-darker bg-center bg-gray-100">
         <div class="p-5">
-            <a href="{{ route('posts.index') }}" class="text-3xl font-semibold text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">
+            <a href="{{ route('posts.index') }}" class="text-3xl font-semibold text-gray-400 hover:text-gray-600 focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">
                 全ての投稿を見る>>
             </a>
         </div>
         <div class="p-3">
-            <a href="{{ route('posts.index', ['category_id'=> 2]) }}" class="text-xl sm:text-3xl px-4 font-semibold text-green-300 hover:text-green-500 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">
+            <a href="{{ route('posts.index', ['category_id'=> 2]) }}" class="text-xl sm:text-3xl px-4 font-semibold text-green-300 hover:text-green-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">
                 原作を探す
             </a>
-            <a href="{{ route('posts.index', ['category_id'=> 1]) }}" class="text-xl sm:text-3xl px-4 font-semibold text-blue-300 hover:text-blue-500 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">
+            <a href="{{ route('posts.index', ['category_id'=> 1]) }}" class="text-xl sm:text-3xl px-4 font-semibold text-blue-300 hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-none">
                 作画を探す
             </a>
         </div>
