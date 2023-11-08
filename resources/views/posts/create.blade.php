@@ -15,13 +15,11 @@
                     @else
                     <div class= "text-cyan-700 pb-2 font-bold">
                     <span style="color:rgb(234, 98, 98);">※現在ログインしていません</span><br>
-                    <span>ログインして投稿すると、</span>
-                    <span> コメントがついた際にメールでお知らせが届きます。</span>
+                    <span class="text-sm">ログインして投稿すると、コメントがついた際にメールでお知らせが届きます。</span>
                     </div>
                     @endauth
                     <div class="card">
                         <div class="card-header">
-                            
                         </div>
                         <div class="card-body bg-gray-300 font-semibold">
                         @if ($errors->any())
@@ -35,6 +33,11 @@
                         @endif
                             <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
                                 {{csrf_field()}}
+                                <div class="mb-3">
+                                    <a href="{{route('users.show', 1)}}" class="whitespace-nowrap text-base sm:text-lg mx-4 font-semibold text-blue-500 underline">
+                                        投稿例を見る≫
+                                    </a>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputTitle">タイトル</label><span style="color:#f00; font-size: small;"> (必須)</span>
