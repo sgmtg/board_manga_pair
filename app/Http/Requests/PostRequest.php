@@ -27,7 +27,7 @@ class PostRequest extends FormRequest
             'user_id'=>'nullable|numeric',
             'category_id'=>'required|numeric',
             'image' => 'nullable|image|max:33600',
-            'twitter' => '|regex:/^[a-zA-Z0-9_]+$/',
+            'twitter' => 'nullable|regex:/^[a-zA-Z0-9_]+$/',
         ];
     }
 }
